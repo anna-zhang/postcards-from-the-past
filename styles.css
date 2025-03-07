@@ -1,0 +1,99 @@
+/* Style for the body to center the content and prevent text selection */
+body {
+    display: flex;
+    flex-direction: column; /* Stacks items vertically */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Keep the cursor with the grab icon if the user has not release the grab */
+body.dragging {
+    cursor: grabbing !important;
+}
+  
+/* Style for the outer container with perspective for 3D effect */
+.outer-container {
+    perspective: 1000px; /* Add perspective for 3D effect */
+    touch-action: none; /* Prevent default touch action */
+}
+  
+/* Style for the inner container to handle 3D transformations and shadows */
+.inner-container {
+    /* Relatively positioned and will be transformed in 3D space */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.2s, transform 0.2s; /* Add transition for box-shadow and transform */
+    cursor: grab; /* Change cursor to indicate draggable */
+    user-select: none; /* Prevent text selection */
+}
+
+/* Change cursor to grabbing when dragging */
+.inner-container:active {
+  cursor: grabbing;
+}
+  
+/* Style for the lenticular images to position them absolutely */
+.lenticular-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    transition: opacity 0.2s, transform 0.2s; /* Add transform transition */
+    opacity: 0; /* Initially,  hide all images */
+}
+
+#description {
+    text-align: center;
+    margin: 1.5rem;
+}
+
+#imageSetTitle {
+    font-family: "Dr Sugiyama", cursive;
+    font-weight: 400;
+    font-style: normal;
+    margin-bottom: 0.25rem;
+    margin-top: 1rem;
+}
+
+#imageSetDateRange {
+    margin-top: 0.25rem;
+}
+
+dialog {
+    text-align: center;
+}
+
+dialog a {
+    font-style: italic;
+    color: blue;
+}
+
+dialog p {
+    margin-top: 0.25rem;
+}
+
+button {
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+@media (max-width: 768px) {
+    #description {
+      margin: 1rem; /* Reduced margin for mobile devices */
+    }
+  }
